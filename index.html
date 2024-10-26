@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <title>Frontend Mentor | Interactive rating component</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap");
+      * {
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: hsl(216, 12%, 8%);
+        padding: 2rem;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Overpass", sans-serif;
+      }
+      .container,
+      .thankyou-art {
+        background-color: hsl(213, 19%, 18%);
+        padding: 1.6rem;
+        border-radius: 0.875rem;
+        max-width: 377px;
+      }
+      .container {
+        display: block;
+      }
+      h1 {
+        color: #fff;
+        font-size: 1.5rem;
+        margin: 1rem 0;
+      }
+      p,
+      label {
+        color: hsl(217, 12%, 63%);
+      }
+      button {
+        background-color: hsl(25, 97%, 53%);
+        color: #fff;
+        border: none;
+      }
+      .circle {
+        background-color: hsl(219, 13%, 26%);
+        width: 2.7rem;
+        height: 2.7rem;
+        border-radius: 1.35rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      form {
+        margin: 2.5rem 0rem 0rem;
+      }
+      .visually-hidden {
+        opacity: 0;
+        position: absolute;
+      }
+      input[type="radio"]:hover ~ label {
+        cursor: pointer;
+        background-color: hsl(217, 12%, 63%);
+        color: #fff;
+      }
+      input[type="radio"]:focus ~ label {
+        outline: 1px solid hsl(25, 97%, 53%);
+        outline-offset: 1px;
+      }
+      input:checked ~ label {
+        background-color: hsl(25, 97%, 53%);
+        color: #fff;
+      }
+      .option {
+        border: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      button {
+        width: 100%;
+        text-transform: uppercase;
+        margin: 1.5rem 0px 0.2rem;
+        padding: 0.9rem 0px;
+        border-radius: 50px;
+        font-size: 0.9rem;
+      }
+      button:hover {
+        background-color: #fff;
+        color: hsl(25, 97%, 53%);
+        font-weight: 700;
+      }
+      article.thankyou-art {
+        display: none;
+        text-align: center;
+      }
+      .rating-selected {
+        background-color: hsl(219, 13%, 26%);
+        color: hsl(25, 97%, 53%);
+        border-radius: 5px;
+        padding: 7px;
+        margin: 1.8rem 0rem 2rem;
+        font-size: 0.89rem;
+        max-width: 100%;
+      }
+      .thankyou-heading {
+        font-size: 2rem;
+        color: #fff;
+        margin: 0px;
+      }
+      .thankyou-discription {
+        line-height: 1.5rem;
+        margin: 10px 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Rating state start -->
+    <main>
+      <div class="container">
+        <div class="circle">
+          <img src="images/icon-star.svg" alt="star" />
+        </div>
+        <section>
+          <h1>How did we do?</h1>
+          <p>
+            Please let us know how we did with your support request. All
+            feedback is appreciated to help us improve our offering!
+          </p>
+        </section>
+        <section>
+          <form id="Form">
+            <fieldset class="option">
+              <legend class="visually-hidden">Rating</legend>
+              <div>
+                <input
+                  type="radio"
+                  name="rating"
+                  id="first"
+                  value="1"
+                  class="visually-hidden"
+                />
+                <label for="first" class="circle">1 </label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="rating"
+                  id="two"
+                  value="2"
+                  class="visually-hidden"
+                />
+                <label for="two" class="circle">2 </label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="rating"
+                  id="three"
+                  value="3"
+                  class="visually-hidden"
+                />
+                <label for="three" class="circle">3 </label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="rating"
+                  id="four"
+                  value="4"
+                  class="visually-hidden"
+                />
+                <label for="four" class="circle">4 </label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="rating"
+                  id="five"
+                  value="5"
+                  class="visually-hidden"
+                />
+                <label for="five" class="circle">5 </label>
+              </div>
+            </fieldset>
+            <button type="submit">Submit</button>
+          </form>
+        </section>
+      </div>
+      <!-- Rating state end -->
+
+      <!-- Thank you state start -->
+      <article class="thankyou-art">
+        <img
+          src="images/illustration-thank-you.svg"
+          alt="illustration"
+          class="thankyou-img"
+        />
+        <h1 class="rating-selected"></h1>
+        <h2 class="thankyou-heading">Thank you!</h2>
+        <p class="thankyou-discription">
+          We appreciate you taking the time to give a rating. If you ever need
+          more support, don’t hesitate to get in touch!
+        </p>
+      </article>
+
+      <!-- Thank you state end -->
+    </main>
+    <script>
+      const form = document.getElementById("Form");
+      const ratingSect = document.querySelector(".container");
+      const thankyouSect = document.querySelector(".thankyou-art");
+      const ratingSelected = document.querySelector(".rating-selected");
+      form.addEventListener("submit", function (e) {
+        if (form.rating.value) {
+          e.preventDefault();
+          ratingSect.style.display = "none";
+          thankyouSect.style.display = "block";
+          ratingSelected.textContent = `You selected ${form.rating.value} out of 5`;
+        }
+      });
+    </script>
+  </body>
+</html>
